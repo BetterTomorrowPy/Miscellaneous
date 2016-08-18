@@ -8,8 +8,8 @@ from torndb import Connection
 
 _burl = 'http://www.hsliuxue.com.cn/'
 fetcher = Session()
-db = Connection(host='192.168.10.203', database='xiongyang', 
-                user='dev', password='KY8oyP5fvWMIeMZz4te6')
+db = Connection(host='', database='', 
+                user='', password='')
 
 
 class HTTPError(Exception):
