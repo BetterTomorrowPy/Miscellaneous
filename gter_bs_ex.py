@@ -7,13 +7,24 @@ from requests import Session
 from bs4 import BeautifulSoup
 from torndb import Connection
 
-from concurrent.futures import ThreadPoolExecutor
+# from concurrent.futures import ThreadPoolExecutor
 
 # from pyspider.libs.base_handler import *
-_thread_pool = ThreadPoolExecutor(8)
-db = Connection(host='', database='', 
-                user='', password='')
+# _thread_pool = ThreadPoolExecutor(8)
+# db = Connection(host='', database='', 
+#                 user='', password='')
 fetcher = Session()
+
+auris = [
+    ('http://bbs.gter.net/forum-49-1.html', '美国'), 
+    ('http://bbs.gter.net/forum-565-1.html', '加拿大'), 
+    ('http://bbs.gter.net/forum-486-1.html', '英国'), 
+    ('http://bbs.gter.net/forum-539-1.html', '欧洲诸国'), 
+    ('http://bbs.gter.net/forum-811-1.html', '港澳台'), 
+    ('http://bbs.gter.net/forum-812-1.html', '新加坡'), 
+    ('http://bbs.gter.net/forum-484-1.html', '日韩'), 
+    ('http://bbs.gter.net/forum-128-1.html', '澳洲新西兰')
+]
 
 
 def fetch_index():
@@ -240,9 +251,33 @@ def main():
 #             "title": response.doc('title').text(),
 #         }
 
+# _headers = {
+#     'Host': 'www.gter.net', 
+#     'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 
+#     'Accept': 'application/json, text/javascript, */*; q=0.01', 
+#     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 
+#     'X-Requested-With': 'XMLHttpRequest', 
+#     'Referer': 'http://www.gter.net/offer/index.html', 
+#     'Cookie': '4B5x_c0ae_saltkey=4UaVRHo7; _miucms_session=8cdebcd675b9f4050a90fa773cadc925; 4B5x_c0ae_lastvisit=1471849474; 4B5x_c0ae_sid=mfT3am; 4B5x_c0ae_lastact=1471853224%09home.php%09spacecp; Hm_lvt_4bd66cbe45a640b607fe46c48f658746=1471853078; Hm_lpvt_4bd66cbe45a640b607fe46c48f658746=1471853328; VMhOIbxho_member=33b7e647df19901f49163fc88c6a8b1d; 4B5x_c0ae_miucms_uid=3745765; 4B5x_c0ae_ulastactivity=d76ffYG2h59JRlgOM8BfaLjJMA3DNzNSNEcCeuyHXqLyB3%2FtIDb%2B; VMhOIbxho_lastactivity=1471853308'
+# }
+
+
+# def test_gter():
+#     _url = 'http://www.gter.net/offer.json?_api_json=61%3A19ce180fb252f15ea5bb1721b01469f5&kw=&page=&page_num=24'
+#     r = fetcher.post(url=_url, headers=_headers)
+#     if 200 != r.status_code:
+#         return
+
+#     import json
+#     content = json.loads(r.content)
+#     data = content.get('data')
+#     for row in data:
+#         print(row)
+
 
 if __name__ == '__main__':
-    main()
+    test_gter()
+    # main()
     # db.execute("DELETE FROM xiongyang.t_cs_students_src where f_site_id = 26")
     # db.execute("DELETE FROM xiongyang.t_cs_cases_src where f_site_id = 26")
     # fetch_srouce('http://bbs.gter.net/forum-1010-3.html')

@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import time
+
+from datetime import datetime
 from tornado.testing import *
 
 
@@ -13,5 +16,11 @@ class APITestCase(AsyncTestCase):
         self.assertIn("FriendFeed", response.body)
 
 
-api = APITestCase()
-api.test_http_fetch()
+# api = APITestCase()
+# api.test_http_fetch()
+def test_mktime():
+	_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+	ta = time.strptime(_now, '%Y-%m-%d %H:%M:%S')
+	print(time.mktime(ta))
+
+test_mktime()
